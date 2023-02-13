@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game: Snake, Water, Gun</title>
+  </head>
+  <body>
+    <script>
+      let userInput = prompt("Write Snake, Water or Gun for play this game");
+      let computerIndex = Math.floor(Math.random() * 3);
+      let computer = ["snake", "water", "gun"][computerIndex];
+      console.log(computer);
+      let match = (computer, userInput) => {
+        if (computer === userInput) {
+          return "Nobody Win";
+        } else if (computer == "snake" && userInput == "water") {
+          return "Computer";
+        } else if (computer == "snake" && userInput == "gun") {
+          return "User";
+        } else if (computer == "water" && userInput == "gun") {
+          return "Computer";
+        } else if (computer == "water" && userInput == "snake") {
+          return "User";
+        } else if (computer == "gun" && userInput == "snake") {
+          return "Computer";
+        } else if (computer == "gun" && userInput === "water") {
+          return "User";
+        } else {
+          return "type only Snake, Gun or Water ";
+        }
+      };
+      let result = match(computer, userInput);
+      document.write(
+        ` Compute: ${computer} <br> User: ${
+          userInput.includes("snake", "water", "gun") ? userInput : result
+        }<br> Winner is: ${result} `
+      );
+    </script>
+  </body>
+</html>
